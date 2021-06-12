@@ -1,5 +1,5 @@
 // Setup empty JS object to act as endpoint for all routes
-projectData = {};
+projectData = [];
 
 // Require Express to run server and routes
 const express = require('express');
@@ -37,7 +37,6 @@ app.get('/all', function (req, res) {
 })
 
 //POST route adds temperature, date, user response incoming data to projectData
-const data = [];
 
 app.post('/addData', addData);
 function addData(request, response) {
@@ -51,11 +50,11 @@ function addData(request, response) {
 }
 
 
- /* solution: 
+ /* solution: The problem is that these properties are not defined in Express module
+ *           - they are added dynamically in runtime.
  *           Install express typings (@types/express)
  *           hit Alt+Enter on "express" in require('express'),
  *           choose Install Typescript definitions for better type information.
  */
-
 
 
