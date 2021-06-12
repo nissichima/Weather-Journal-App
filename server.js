@@ -32,30 +32,30 @@ function listening(){
 //GET route that returns the projectData object
 
 
-app.get('/', function (req, res) {
+app.get('/all', function (req, res) {
   res.send(projectData);
 })
 
 //POST route adds temperature, date, user response incoming data to projectData
 const data = [];
 
-app.post('/temperature', temperature);
+app.post('/addData', addData);
+function addData(request, response) {
+    const newWeatherJournal = {
+        temperature: request.body.temperature,
+        date: request.body.date,
+        userResponse: request.body.userResponse
+    };
+    projectData.push(newWeatherJournal);
+    response.send(projectData);
+}
 
-function temperature (req,res){
-    console.log(req.body)
-    data.push(req.body);
-};
 
-app.post('/date', date);
+ /* solution: 
+ *           Install express typings (@types/express)
+ *           hit Alt+Enter on "express" in require('express'),
+ *           choose Install Typescript definitions for better type information.
+ */
 
-function date (req,res){
-    console.log(req.body)
-    data.push(req.body);
-};
 
-app.post('/user-response', useresponse);
 
-function useresponse (req,res){
-    console.log(req.body)
-    data.push(req.body);
-};
