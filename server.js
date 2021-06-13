@@ -1,5 +1,5 @@
 // Setup empty JS object to act as endpoint for all routes
-projectData = [];
+projectData = {};
 
 // Require Express to run server and routes
 const express = require('express');
@@ -45,8 +45,7 @@ function addData(request, response) {
         date: request.body.date,
         userResponse: request.body.userResponse
     };
-    projectData.push(newWeatherJournal);
-    response.send(projectData);
+    projectData=newWeatherJournal;
 }
 
 
@@ -54,7 +53,7 @@ function addData(request, response) {
  *           - they are added dynamically in runtime.
  *           Install express typings (@types/express)
  *           hit Alt+Enter on "express" in require('express'),
- *           choose Install Typescript definitions for better type information.
+ *           choose Install Typescript definitions for better type information.!
  */
 
 
